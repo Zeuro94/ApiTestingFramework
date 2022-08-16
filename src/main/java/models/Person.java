@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "age",
         "id",
         "address",
-        "phoneNumbers"
+        "phoneNumber"
 })
 
 public class Person {
@@ -32,8 +32,8 @@ public class Person {
     private Integer id;
     @JsonProperty("address")
     private String address;
-    @JsonProperty("phoneNumbers")
-    private String phoneNumbers;
+    @JsonProperty("phoneNumber")
+    private String phoneNumber;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -87,14 +87,14 @@ public class Person {
         this.address = address;
     }
 
-    @JsonProperty("phoneNumbers")
+    @JsonProperty("phoneNumber")
     public String getPhoneNumbers() {
-        return phoneNumbers;
+        return phoneNumber;
     }
 
-    @JsonProperty("phoneNumbers")
-    public void setPhoneNumbers(String phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
+    @JsonProperty("phoneNumber")
+    public void setPhoneNumbers(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @JsonAnyGetter
