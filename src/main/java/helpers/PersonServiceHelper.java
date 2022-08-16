@@ -8,10 +8,11 @@ import io.restassured.response.Response;
 import models.Person;
 import org.apache.http.HttpStatus;
 import utils.ConfigManager;
-import static org.testng.Assert.assertEquals;
 
 import java.lang.reflect.Type;
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
 
 public class PersonServiceHelper {
 
@@ -20,6 +21,7 @@ public class PersonServiceHelper {
 
     public static final String BASE_URL = ConfigManager.getInstance().getString("base_url");
     public static final String PORT = ConfigManager.getInstance().getString("port");
+
 
     public PersonServiceHelper(){
         RestAssured.baseURI = BASE_URL;
@@ -39,6 +41,16 @@ public class PersonServiceHelper {
 
         List<Person> personList = response.as(type);
         return personList;
+    }
+
+    public Response getPerson(int id){
+
+        Response response = RestAssured
+                .given().log().all()
+                .contentType(ContentType.JSON)
+                .get(EndPoints.GET_SINGLE_PERSON + id)
+                .andReturn();
+        return response;
     }
 
     public Response createPerson(){
